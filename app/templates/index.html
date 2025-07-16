@@ -14,17 +14,23 @@
       --fb-blue: #1877F2;
       --fb-gray: #F0F2F5;
       --fb-dark-gray: #606770;
+      --light-blue: #e6f3ff;
       --glow-blue: rgba(24, 119, 242, 0.3);
     }
 
     body {
       font-family: 'Helvetica Neue', Arial, sans-serif;
+      background-color: var(--fb-gray);
       overflow-x: hidden;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
     }
 
-    /* Gradient background with wave animation */
     .bg-gradient {
-      background: linear-gradient(135deg, var(--fb-gray) 0%, #e6f3ff 100%);
+      background: linear-gradient(135deg, var(--fb-gray) 0%, var(--light-blue) 100%);
       position: relative;
       z-index: 1;
     }
@@ -62,32 +68,47 @@
       }
     }
 
-    /* Circular progress bar with glow */
+    /* General style improvements */
+    .btn-primary {
+      background-color: var(--fb-blue);
+      color: white;
+      padding: 12px 24px;
+      font-size: 16px;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .btn-primary:hover {
+      background-color: #1666dc;
+      transform: scale(1.05);
+      box-shadow: 0 8px 16px var(--glow-blue);
+    }
+
+    /* Form field improvements */
+    input,
+    textarea {
+      border-radius: 8px;
+      padding: 12px 20px;
+      width: 100%;
+      margin-top: 10px;
+      border: 1px solid #ccc;
+      font-size: 16px;
+      outline: none;
+      transition: all 0.3s ease;
+    }
+
+    input:focus,
+    textarea:focus {
+      border-color: var(--fb-blue);
+      box-shadow: 0 0 5px var(--fb-blue);
+    }
+
+    /* Circular progress bar */
     .circle-progress {
       transform: rotate(-90deg);
       transition: stroke-dasharray 0.6s ease-in-out, stroke 0.3s ease-in-out;
       filter: drop-shadow(0 0 8px var(--glow-blue));
-    }
-
-    /* Pulsing spinner */
-    @keyframes pulse {
-
-      0%,
-      100% {
-        transform: scale(1);
-        opacity: 1;
-      }
-
-      50% {
-        transform: scale(1.2);
-        opacity: 0.7;
-      }
-    }
-
-    .spinner {
-      border: 4px solid rgba(0, 0, 0, 0.1);
-      border-left-color: var(--fb-blue);
-      animation: pulse 1.2s ease-in-out infinite;
     }
 
     /* Fade-in animation */
@@ -107,16 +128,17 @@
       animation: fadeIn 0.8s ease-in-out;
     }
 
-    /* Button hover effect */
-    .btn-primary:hover {
-      background-color: #1666dc;
-      transform: scale(1.05);
-      box-shadow: 0 6px 16px var(--glow-blue);
+    /* Footer */
+    footer {
+      background-color: var(--fb-gray);
+      text-align: center;
+      padding: 20px;
+      font-size: 14px;
+      color: var(--fb-dark-gray);
     }
 
-    /* Input focus effect */
-    input:focus {
-      box-shadow: 0 0 10px var(--glow-blue);
+    footer strong {
+      color: #1877F2;
     }
   </style>
 </head>
@@ -145,7 +167,7 @@
             its content and comments.</p>
         </div>
         <button type="submit"
-          class="w-full btn-primary bg-[var(--fb-blue)] text-white px-4 py-3 rounded-lg font-medium hover:bg-[var(--fb-blue)] focus:outline-none focus:ring-2 focus:ring-[var(--fb-blue)] focus:ring-opacity-50 transition duration-300 flex items-center justify-center"
+          class="w-full btn-primary text-white px-4 py-3 rounded-lg font-medium hover:bg-[var(--fb-blue)] focus:outline-none focus:ring-2 focus:ring-[var(--fb-blue)] focus:ring-opacity-50 transition duration-300 flex items-center justify-center"
           id="scrape-button">
           <span id="button-text">Scrape Post</span>
           <div id="spinner" class="hidden h-5 w-5 ml-3 rounded-full spinner"></div>
