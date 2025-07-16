@@ -34,8 +34,6 @@ RUN playwright install --with-deps chromium
 # Copy application code
 COPY ./app ./app
 
-# Copy .env file (optional, for proxy credentials)
-COPY .env .env
 
 # Expose port 8000
 EXPOSE 8000
