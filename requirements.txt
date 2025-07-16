@@ -1,0 +1,9 @@
+fastapi==0.115.0
+jinja2
+uvicorn==0.30.6
+playwright==1.48.0
+requests==2.32.3
+python-dotenv==1.0.1
+pandas==2.2.3
+openpyxl==3.1.5
+python-multipart
